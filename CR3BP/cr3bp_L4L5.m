@@ -93,7 +93,7 @@ if p.Results.animate
     end
 else
     figure(1)
-    plot(x,y,'k')
+    plot(x,y,'w','Linewidth',3)
     figure(2)
     plot(xi,yi,'k')
     plot(xm1i,ym1i,'b')
