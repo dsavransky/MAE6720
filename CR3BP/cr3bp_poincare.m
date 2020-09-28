@@ -23,7 +23,7 @@ L2 = fsolve(f,1-mu+0.1);
 L1 = fsolve(f,0.1);
 
 %energy of L-points
-C4 = -1/2*(3+mu - mu^2);
+C4 = -1/2*(3- mu + mu^2);
 Cl123 = @(x0) -(x0.^2)/2 - ((1-mu)./sqrt((x0+mu).^2) + mu./sqrt((x0 - (1-mu)).^2));
 
 soi = mu^(2/5);

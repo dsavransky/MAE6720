@@ -24,8 +24,8 @@ rotMatE2 = @(ang) [cos(ang) 0 -sin(ang);0 1 0;sin(ang) 0 cos(ang)];
 rotMatE1 = @(ang) [1 0 0;0 cos(ang) sin(ang);0 -sin(ang) cos(ang)];
 
 
-[t,x,dx] = nbodyVect(x0(:),dx0(:),mus,0:0.1:10*365.254,'c');
-%[t,x,dx] = nbodyVect(x0(:),dx0(:),mus,0:0.001:100,'c');
+%[t,x,dx] = nbodyVect(x0(:),dx0(:),mus,0:0.1:10*365.254,'c');
+[t,x,dx] = nbodyVect(x0(:),dx0(:),mus,0:0.01:100,'c');
 
 xj = x(:,4:6) - x(:,1:3);
 xe = x(:,7:9) - x(:,1:3);
