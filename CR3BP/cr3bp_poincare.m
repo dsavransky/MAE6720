@@ -95,15 +95,19 @@ xm2i = (1-mu)*cos(t);
 ym2i = (1-mu)*sin(t);
 
 
+sz = get(0,'Screensize');
 figure(1)
 clf()
+set(1,'Position',[0 sz(4)-sz(3)*3/8 sz(3)/2 sz(3)*3/8])
 hold on
 set(gca,'FontName','Times','FontSize',16)
 contourf(X,Y,U,[Cl123(L1),Cl123(L2),Cl123(L3),C4])
 plot([-mu,1-mu],[0,0],'r.','MarkerSize',30)
 plot([0.5-mu,0.5-mu,L1,L2,L3],[sqrt(3)/2,-sqrt(3)/2,0,0,0],'k.','MarkerSize',20)
+
 figure(2)
 clf()
+set(2,'Position',[sz(3)/2 sz(4)-sz(3)*3/8 sz(3)/2 sz(3)*3/8])
 hold on
 set(gca,'FontName','Times','FontSize',16)
 if p.Results.animate
