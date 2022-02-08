@@ -14,7 +14,7 @@ for j = 1:length(l)
         plot3(x,y,z)
         set(gca,'XTickLabel',{},'YTickLabel',{},'ZTickLabel',{},'FontSize',16)
         if j == 1
-            title(['\nu = ',num2str(nu(k))])
+            title(['$\nu = ',num2str(nu(k)),'$'],'Interpreter','latex')
         end
         if k == 1
             zlabel(['\lambda = ',num2str(l(j))])
