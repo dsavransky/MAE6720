@@ -24,7 +24,10 @@ P = 2*pi * sqrt(a^3/mu);
 n = sqrt(mu/a^3);
 tpj = 0;
 
-t = linspace(0,5*P,1000);
+fps = 60;
+nframes = 10*fps;
+
+t = linspace(0,5*P,nframes);
 
 Pa = P/f;
 aa = ((Pa/2/pi)^2*mua)^(1/3);
@@ -47,10 +50,11 @@ end
 dt = mean(diff(t))*500;
 figure(2)
 clf
-set(2,'Position',[200,200,1120,420])
+%set(2,'Position',[200,200,1120,420])
 subplot(1,2,1)
 hold on
 tmp = max(abs([r_js(:);r_as(:)]));
+axis equal
 axis([-tmp,tmp,-tmp,tmp])
 plot(0,0,'g.','MarkerSize',60);
 j = plot(r_js(1,1),r_js(1,2),'r.','MarkerSize',40);
@@ -59,9 +63,11 @@ a = plot(r_as(1,1),r_as(1,2),'b.','MarkerSize',20);
 al = plot(r_as(1,1),r_as(1,2),'b--');
 grid on
 
+
 subplot(1,2,2)
 hold on
 tmp = max(abs(rc(:)));
+axis equal
 axis([-tmp,tmp,-tmp,tmp])
 plot(0,0,'g.','MarkerSize',60);
 ac = plot(rc(1,1),rc(1,2),'b.','MarkerSize',20);
@@ -74,6 +80,7 @@ for k = 2:length(t)
     set(jl,'XData',r_js(1:k,1),'YData',r_js(1:k,2))
     set(al,'XData',r_as(1:k,1),'YData',r_as(1:k,2))
     set(acl,'XData',rc(1:k,1),'YData',rc(1:k,2))
-    pause((t(k) - t(k-1))/dt*5)
+    pause(1/fps);
+    %pause((t(k) - t(k-1))/dt*2)
 end
 

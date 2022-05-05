@@ -14,12 +14,13 @@ P = 2*pi * sqrt(a^3/mu);
 n = sqrt(mu/a^3);
 tpj = 0;
 
-t = linspace(0,10*P,5000);
+t = linspace(0,5*P,2000);
 
 Pa = P/2;
 aa = ((Pa/2/pi)^2*mua)^(1/3);
-ea = 0.1;
+ea = 0.6;
 tpa = Pa/2;
+%tpa = 0;
 na = sqrt(mua/aa^3);
 
 M = mod(n*(t-tpj),2*pi);
@@ -36,6 +37,7 @@ dt = mean(diff(t))*200;
 figure(2)
 clf
 hold on
+axis equal
 axis([-6,6,-6,6])
 s = plot(0,0,'g.','MarkerSize',60);
 j = plot(r_js(1,1),r_js(1,2),'r.','MarkerSize',40);
@@ -44,6 +46,7 @@ a = plot(r_as(1,1),r_as(1,2),'b.','MarkerSize',20);
 al = plot(r_as(1,1),r_as(1,2),'b--');
 grid on
 
+pause
 for k = 2:length(t)
     set(j,'XData',r_js(k,1),'YData',r_js(k,2))
     set(a,'XData',r_as(k,1),'YData',r_as(k,2))
@@ -94,15 +97,19 @@ v_ab = v_as - v_sb;
 [T,Y,DY] = nbodyVect([r_jb,r_ab,r_sb].',[v_jb,v_ab,v_sb].',[muj,eps(mus),mus],t,'c');
 
 dt = mean(diff(T))*1000;
-figure(1)
+figure(2)
 clf
 hold on
+axis equal
+
 axis([min(Y(:)),max(Y(:)),min(Y(:)),max(Y(:))])
 s = plot(Y(1,end-2),Y(1,end-1),'g.','MarkerSize',60);
 j = plot(Y(1,1),Y(1,2),'r.','MarkerSize',40);
 jl = plot(Y(1,1),Y(1,2),'r--');
 a = plot(Y(1,4),Y(1,5),'b.','MarkerSize',20);
 al = plot(Y(1,4),Y(1,5),'b--');
+
+pause
 
 for k = 2:length(T)
     set(s,'XData',Y(k,end-2),'YData',Y(k,end-1))
@@ -120,7 +127,7 @@ Es = linspace(0,2*pi,500);
 [r1,v1] = orbElem2vec(1/(1 - 0.8),0.8,0,0,Es,0,mua);
 r1 = r1.';
 
-figure(3)
+figure(2)
 clf
 hold on
 s = plot(0,0,'g.','MarkerSize',60);
